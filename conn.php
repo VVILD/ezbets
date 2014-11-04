@@ -1,7 +1,7 @@
 <?php 
-include "users.php";
-include "bets.php";
-include "match.php";
+include "class/users.php";
+include "class/bets.php";
+include "class/match.php";
 
 global $username; 
 global $password; 

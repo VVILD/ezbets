@@ -8,10 +8,12 @@ $mid="6";
 $bid="1";
 $bamt="1";
 
-$obj= new bets();
-$betObj=$obj->BetReturn(2,1);
 
+$usersObj=new users();
+    $olduser=$usersObj->getdetails(123);
 
+echo $olduser[2];
+echo $olduser[3];
 
 
 ?>

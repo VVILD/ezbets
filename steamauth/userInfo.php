@@ -1,5 +1,8 @@
 <?php
-
+    $usersObj=new users();
+    $detail=$usersObj->getdetails($_SESSION['steamid']);
+ $steamprofile['currency_total'] =$detail[2];
+ $steamprofile['currency_current'] =$detail[3];
     $api_key = "CC887163434BB59AF16D2EA698D800CF"; // Insert API Key here!
 
     $url = file_get_contents("http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=".$api_key."&steamids=".$_SESSION['steamid']); 

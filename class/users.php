@@ -36,6 +36,23 @@ return False;
 
 }
 
+public function getdetails($userID)
+{
+    # code... get active bets of a user where userid is given and result=null
+
+    global $dbh;
+$sql = "Select * from users where userid = :userid ";
+$stmt = $dbh->prepare($sql);
+$stmt->bindParam('userid', $userID, PDO::PARAM_STR);       
+$stmt->execute(); 
+
+$result= $stmt->fetch();
+return $result;
+
+
+}
+
+
 public function newuser($id,$name,$currency_current=0,$currency_total=0){
 
 global $dbh;
@@ -132,17 +149,23 @@ return $betObj;
 }
 
 }
-
-public function checkolduser($steamid)
+public function checkolduser($steamid)//returns 1 if old user 0 if new user
 {
       # code...
-      $sql="SELECT count(*) FROM users WHERE $steamid = $steamid";
-$sth = $this->db->prepare($sql);
+      global $dbh;
+      $sql="SELECT count(*) FROM users WHERE userid = $steamid";
+$sth = $dbh->prepare($sql);
 $sth->execute();
 $rows = $sth->fetch(PDO::FETCH_NUM);
-echo "it returned rows :";
-echo $rows[0];
+if ($rows[0]==1)
+{
+      return 1;
 }
+
+return 0;
+}
+
+
 
 
 
